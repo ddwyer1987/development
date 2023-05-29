@@ -1,0 +1,34 @@
+version: '3'
+
+services:
+  ubuntu:
+    image: daviddwyer1987/dev
+    container_name: sandbox
+    command: tail -f /dev/null
+    volumes:
+      - ./vscode:/root/.vscode-server
+    networks:
+      - mynetwork
+
+  mysql:
+    image: mysql
+    container_name: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=mysecretpassword
+    networks:
+      - mynetwork
+
+  mongo:
+    image: mongo
+    container_name: mongo
+    networks:
+      - mynetwork
+
+  solr:
+    image: solr
+    container_name: solr
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
