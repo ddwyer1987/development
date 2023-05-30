@@ -1,5 +1,8 @@
 FROM ubuntu:bionic
 
+# Set the working directory
+WORKDIR /workspace
+
 # Install required packages
 RUN apt-get update && \
     apt-get install -y \
@@ -8,8 +11,9 @@ RUN apt-get update && \
         wget \
         software-properties-common \
         gpg \
-        git
-
+        git \
+    
+    
 # Install Terraform
 RUN apt install consul
 
